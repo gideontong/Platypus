@@ -247,7 +247,7 @@ wappalyzer.driver.displayApps = async (detected, meta, context) => {
   [pinnedCategory].concat(categoryOrder).forEach((match) => {
     Object.keys(detected).forEach((appName) => {
       const app = detected[appName];
-      Console.log("maybe detected" + app);
+      console.log("maybe detected" + app);
 
       app.props.cats.forEach((category) => {
         if (category === match && !found) {
