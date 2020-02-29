@@ -70,7 +70,8 @@
     "gulp-zip": "^2.0.3",
     "preprocessify": "^1.0.1",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "wappalyzer": "^5.9.24"
   },
   "license": "MIT"
 }
