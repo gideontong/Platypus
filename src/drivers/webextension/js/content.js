@@ -37,6 +37,7 @@ if (typeof browser !== 'undefined' && typeof document.body !== 'undefined') {
       .map(script => script.src)
       .filter(script => script.indexOf('data:text/javascript;') !== 0);
 
+    // Console.log("scripts);
     port.postMessage({ id: 'analyze', subject: { html, scripts } });
 
     // JavaScript variables
@@ -78,7 +79,7 @@ port.onMessage.addListener((message) => {
 
       break;
     default:
-      // Do nothing
+    // Do nothing
   }
 });
 

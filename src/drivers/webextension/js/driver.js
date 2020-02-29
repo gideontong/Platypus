@@ -199,7 +199,7 @@ browser.runtime.onConnect.addListener((port) => {
 
         break;
       default:
-        // Do nothing
+      // Do nothing
     }
 
     if (response) {
@@ -247,6 +247,7 @@ wappalyzer.driver.displayApps = async (detected, meta, context) => {
   [pinnedCategory].concat(categoryOrder).forEach((match) => {
     Object.keys(detected).forEach((appName) => {
       const app = detected[appName];
+      print("maybe detected" + app);
 
       app.props.cats.forEach((category) => {
         if (category === match && !found) {
@@ -331,11 +332,13 @@ wappalyzer.driver.ping = async (hostnameCache = {}, adCache = []) => {
 
   if (tracking && termsAccepted) {
     if (Object.keys(hostnameCache).length) {
-      post('https://api.wappalyzer.com/ping/v1/', hostnameCache);
+      // Tracking permanently disabled
+      // post('https://api.wappalyzer.com/ping/v1/', hostnameCache);
     }
 
     if (adCache.length) {
-      post('https://ad.wappalyzer.com/log/wp/', adCache);
+      // Tracking permanently disabled
+      // post('https://ad.wappalyzer.com/log/wp/', adCache);
     }
 
     await setOption('robotsTxtCache', {});
