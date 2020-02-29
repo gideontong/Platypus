@@ -1,78 +1,19 @@
 {
-  "name": "slo-hacks-2020",
-  "version": "0.0.1",
-  "description": "Finds and displays current CVEs of a website",
-  "scripts": {
-    "chrome-build": "cross-env TARGET=chrome gulp",
-    "opera-build": "cross-env TARGET=opera gulp",
-    "firefox-build": "cross-env TARGET=firefox gulp",
-    "build": "cross-env NODE_ENV=production npm run chrome-build && cross-env NODE_ENV=production npm run opera-build && cross-env NODE_ENV=production npm run firefox-build",
-    "chrome-watch": "cross-env TARGET=chrome gulp watch",
-    "opera-watch": "cross-env TARGET=opera gulp watch",
-    "firefox-watch": "cross-env TARGET=firefox gulp watch",
-    "chrome-dist": "cross-env NODE_ENV=production cross-env TARGET=chrome gulp dist",
-    "opera-dist": "cross-env NODE_ENV=production cross-env TARGET=opera gulp dist",
-    "firefox-dist": "cross-env NODE_ENV=production cross-env TARGET=firefox gulp dist",
-    "dist": "npm run chrome-dist && npm run opera-dist && npm run firefox-dist"
+  "dependencies": {
+    "file-type": "7.4.*",
+    "is-svg": "2.1.*",
+    "read-chunk": "2.1.*"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gideontong/SLO-Hacks-2020"
-  },
-  "author": "Gideon Tong <gideon@gideontong.com> (https://gideontong.com)",
-  "contributors": [
-    {
-      "name": "Gideon Tong",
-      "email": "gideon@gideontong.com",
-      "url": "https://gideontong.com"
-    },
-    {
-      "name": "Jessica Lam",
-      "email": "example@example.com",
-      "url": "https://github.com/jesslam948"
-    },
-    {
-      "name": "Paul Pan",
-      "email": "example@example.com",
-      "url": "https://github.com/paulpan05"
-    },
-    {
-      "name": "Luke Nguyen",
-      "email": "example@example.com",
-      "url": "https://example.com"
-    }
-  ],
-  "bugs": {
-    "url": "https://github.com/gideontong/SLO-Hacks-2020/issues"
-  },
-  "homepage": "https://github.com/gideontong/SLO-Hacks-2020",
   "devDependencies": {
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
-    "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
-    "cross-env": "^3.2.4",
-    "event-stream": "^3.3.4",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-eslint": "^2.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-livereload": "^3.8.1",
-    "gulp-load-plugins": "^0.5.3",
-    "gulp-merge-json": "^1.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-run-sequence": "*",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
-    "gulp-zip": "^2.0.3",
-    "preprocessify": "^1.0.1",
-    "puppeteer": "^2.1.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "wappalyzer": "^5.9.24"
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "mocha": "^5.2.0"
   },
-  "license": "MIT"
+  "scripts": {
+    "test": "mocha -R spec src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
+  }
 }
