@@ -5,4 +5,4 @@ dist
 .sass-cache
 .DS_Store
 build
-.gitignore
+package-lock.json
