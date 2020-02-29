@@ -1,4 +1,12 @@
 {
+  "name": "slo-hacks-2020",
+  "version": "0.0.1",
+  "description": "CVE detector... kinda",
+  "keywords": [
+    "CVE",
+    "cybersecurity"
+  ],
+  "homepage": "https://github.com/gideontong/SLO-Hacks-2020",
   "dependencies": {
     "webextension-polyfill": "^0.4.0"
   }
