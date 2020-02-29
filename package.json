@@ -1,7 +1,7 @@
 {
-  "name": "extension-boilerplate",
-  "version": "0.0.2",
-  "description": "A template for creating cross-browser extensions",
+  "name": "slo-hacks-2020",
+  "version": "0.0.1",
+  "description": "Finds and displays current CVEs of a website",
   "scripts": {
     "chrome-build": "cross-env TARGET=chrome gulp",
     "opera-build": "cross-env TARGET=opera gulp",
@@ -17,37 +17,60 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EmailThis/extension-boilerplate"
+    "url": "https://github.com/gideontong/SLO-Hacks-2020"
   },
-  "author": "Bharani <bharani91@gmail.com> (https://github.com/bharani91)",
+  "author": "Gideon Tong <gideon@gideontong.com> (https://gideontong.com)",
+  "contributors": [
+    {
+      "name": "Gideon Tong",
+      "email": "gideon@gideontong.com",
+      "url": "https://gideontong.com"
+    },
+    {
+      "name": "Jessica Lam",
+      "email": "example@example.com",
+      "url": "https://github.com/jesslam948"
+    },
+    {
+      "name": "Paul Pan",
+      "email": "example@example.com",
+      "url": "https://github.com/paulpan05"
+    },
+    {
+      "name": "Luke Nguyen",
+      "email": "example@example.com",
+      "url": "https://example.com"
+    }
+  ],
   "bugs": {
-    "url": "https://github.com/EmailThis/extension-boilerplate/issues"
+    "url": "https://github.com/gideontong/SLO-Hacks-2020/issues"
   },
-  "homepage": "https://www.emailthis.me/extension-boilerplate",
+  "homepage": "https://github.com/gideontong/SLO-Hacks-2020",
   "devDependencies": {
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
+    "browserify": "^14.5.0",
     "cross-env": "^3.2.4",
-    "event-stream": "^3.3.4",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-eslint": "^2.0.0",
+    "event-stream": "^3.3.5",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.3",
+    "gulp-clean": "^0.3.2",
+    "gulp-eslint": "^2.1.0",
     "gulp-if": "^2.0.2",
     "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^0.5.3",
-    "gulp-merge-json": "^1.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-run-sequence": "*",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-merge-json": "^1.3.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^1.12.1",
     "gulp-uglify": "^1.5.4",
     "gulp-zip": "^2.0.3",
     "preprocessify": "^1.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  }
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^1.1.2"
+  },
+  "license": "MIT"
 }
