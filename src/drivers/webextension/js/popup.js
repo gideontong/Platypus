@@ -227,6 +227,7 @@ function updateThemeMode(res) {
     document.body.classList.add('theme-mode-sync');
   }
 }
+
 function displayApps(response) {
   pinnedCategory = response.pinnedCategory; // eslint-disable-line prefer-destructuring
   termsAccepted = response.termsAccepted; // eslint-disable-line prefer-destructuring
@@ -254,11 +255,21 @@ function displayApps(response) {
   }
 }
 
+function getCVEs(name, version = "0.0") {
+  
+  return;
+}
+
 port.onMessage.addListener((message) => {
   switch (message.id) {
     case 'get_apps':
       // console.log(message.response.tabCache.detected);
       for (var a in message.response.tabCache.detected) {
+        const name = message.response.tabCache.detected[a].name;
+        var version = message.response.tabCache.detected[a].version;
+        if (version.length == 0) {
+          // do something
+        }
         console.log(message.response.tabCache.detected[a].name + " " + message.response.tabCache.detected[a].version);
       }
       displayApps(message.response);
