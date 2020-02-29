@@ -257,6 +257,7 @@ function displayApps(response) {
 port.onMessage.addListener((message) => {
   switch (message.id) {
     case 'get_apps':
+      console.log(message.response);
       displayApps(message.response);
 
       break;
