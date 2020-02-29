@@ -1,5 +1,8 @@
 import ext from "./utils/ext";
 import storage from "./utils/storage";
+//import Wappalyzer from '../../node_modules/wappalyzer/wappalyzer.js';
+const Wappalyzer = require('wappalyzer');
+//import Wappalyzer from 'wappalyzer';
 
 var popup = document.getElementById("app");
 storage.get('color', function(resp) {
@@ -11,6 +14,30 @@ storage.get('color', function(resp) {
 
 var template = (data) => {
   var json = JSON.stringify(data);
+  var url = data.url;
+  var options = {
+    // browser: 'puppeteer',
+    debug: false,
+    delay: 500,
+    maxDepth: 3,
+    maxUrls: 10,
+    maxWait: 5000,
+    recursive: true,
+    userAgent: 'Wappalyzer',
+    htmlMaxCols: 2000,
+    htmlMaxRows: 2000,
+  };
+  /*
+  const wappalyzer = new Wappalyzer(url, options);
+  wappalyzer.analyze()
+  .then((json) => {
+    var x = JSON.stringify(json, null, 2);
+  })
+  .catch((error) => {
+    alert(error);
+  });
+  */
+
   return (`
   <div class="site-description">
     <h3 class="title">${data.title}</h3>
