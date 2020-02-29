@@ -1,8 +1,8 @@
 {
-  "name": "Wappalyzer",
-  "short_name": "Wappalyzer",
-  "author": "Elbert Alias",
-  "homepage_url": "https://www.wappalyzer.com",
+  "name": "slo-hacks-2020",
+  "short_name": "slo-hacks-2020",
+  "author": "Gideon Tong",
+  "homepage_url": "https://www.github.com/gideontong/SLO-Hacks-2020/",
   "description": "Identify web technologies",
   "version": "5.9.24",
   "default_locale": "en",

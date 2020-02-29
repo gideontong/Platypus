@@ -128,9 +128,9 @@ class Wappalyzer {
     this.adCache = [];
 
     this.config = {
-      websiteURL: 'https://www.github.com/gideontong/SLO-Hacks-2020',
-      twitterURL: 'https://twitter.com/gideontong',
-      githubURL: 'https://www.github.com/gideontong/SLO-Hacks-2020',
+      websiteURL: 'https://www.github.com/gideontong/SLO-Hacks-2020/',
+      twitterURL: 'https://twitter.com/gideontong/',
+      githubURL: 'https://www.github.com/gideontong/SLO-Hacks-2020/',
     };
   }
 

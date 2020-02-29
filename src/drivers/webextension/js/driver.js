@@ -368,7 +368,7 @@ wappalyzer.driver.ping = async (hostnameCache = {}, adCache = []) => {
 
   if (previousVersion === null) {
     openTab({
-      url: `${wappalyzer.config.websiteURL}installed`,
+      url: `${wappalyzer.config.websiteURL}docs/installed`,
     });
   } else if (version !== previousVersion && upgradeMessage) {
     openTab({

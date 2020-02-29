@@ -1,0 +1,3 @@
+thx for installing
+
+-gid

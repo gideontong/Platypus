@@ -6,7 +6,7 @@
     "CVE",
     "cybersecurity"
   ],
-  "homepage": "https://github.com/gideontong/SLO-Hacks-2020",
+  "homepage": "https://github.com/gideontong/SLO-Hacks-2020/",
   "dependencies": {
     "webextension-polyfill": "^0.4.0"
   }
