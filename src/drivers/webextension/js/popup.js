@@ -259,7 +259,7 @@ port.onMessage.addListener((message) => {
     case 'get_apps':
       // console.log(message.response.tabCache.detected);
       for (var a in message.response.tabCache.detected) {
-        console.log(a);
+        console.log(message.response.tabCache.detected[a].name + " " + message.response.tabCache.detected[a].version);
       }
       displayApps(message.response);
 
