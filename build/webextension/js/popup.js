@@ -4,217 +4,217 @@
 /** global: browser */
 /** global: jsonToDOM */
 
-let pinnedCategory = null;
-let termsAccepted = false;
+let pinnedCategory = null
+let termsAccepted = false
 
 const port = browser.runtime.connect({
-  name: 'popup.js',
-});
+  name: 'popup.js'
+})
 
-function slugify(string) {
-  return string.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/--+/g, '-').replace(/(?:^-|-$)/, '');
+function slugify (string) {
+  return string.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/--+/g, '-').replace(/(?:^-|-$)/, '')
 }
 
-function i18n() {
-  const nodes = document.querySelectorAll('[data-i18n]');
+function i18n () {
+  const nodes = document.querySelectorAll('[data-i18n]')
 
   Array.prototype.forEach.call(nodes, (node) => {
-    node.innerHTML = browser.i18n.getMessage(node.dataset.i18n);
-  });
+    node.innerHTML = browser.i18n.getMessage(node.dataset.i18n)
+  })
 }
 
-function replaceDom(domTemplate) {
-  const container = document.getElementsByClassName('container')[0];
+function replaceDom (domTemplate) {
+  const container = document.getElementsByClassName('container')[0]
 
   while (container.firstChild) {
-    container.removeChild(container.firstChild);
+    container.removeChild(container.firstChild)
   }
 
-  container.appendChild(jsonToDOM(domTemplate, document, {}));
+  container.appendChild(jsonToDOM(domTemplate, document, {}))
 
-  i18n();
+  i18n()
 
   Array.from(document.querySelectorAll('.detected__category-pin-wrapper')).forEach((pin) => {
     pin.addEventListener('click', () => {
-      const categoryId = parseInt(pin.dataset.categoryId, 10);
+      const categoryId = parseInt(pin.dataset.categoryId, 10)
 
       if (categoryId === pinnedCategory) {
-        pin.className = 'detected__category-pin-wrapper';
+        pin.className = 'detected__category-pin-wrapper'
 
-        pinnedCategory = null;
+        pinnedCategory = null
       } else {
-        const active = document.querySelector('.detected__category-pin-wrapper--active');
+        const active = document.querySelector('.detected__category-pin-wrapper--active')
 
         if (active) {
-          active.className = 'detected__category-pin-wrapper';
+          active.className = 'detected__category-pin-wrapper'
         }
 
-        pin.className = 'detected__category-pin-wrapper detected__category-pin-wrapper--active';
+        pin.className = 'detected__category-pin-wrapper detected__category-pin-wrapper--active'
 
-        pinnedCategory = categoryId;
+        pinnedCategory = categoryId
       }
 
       port.postMessage({
         id: 'set_option',
         key: 'pinnedCategory',
-        value: pinnedCategory,
-      });
-    });
-  });
+        value: pinnedCategory
+      })
+    })
+  })
 }
 
-function replaceDomWhenReady(dom) {
+function replaceDomWhenReady (dom) {
   if (/complete|interactive|loaded/.test(document.readyState)) {
-    replaceDom(dom);
+    replaceDom(dom)
   } else {
     document.addEventListener('DOMContentLoaded', () => {
-      replaceDom(dom);
-    });
+      replaceDom(dom)
+    })
   }
 }
 
-function appsToDomTemplate(response) {
-  let template = [];
+function appsToDomTemplate (response) {
+  let template = []
 
   if (response.tabCache && Object.keys(response.tabCache.detected).length > 0) {
-    const categories = {};
+    const categories = {}
 
     // Group apps by category
     for (const appName in response.tabCache.detected) {
       response.apps[appName].cats.forEach((cat) => {
-        categories[cat] = categories[cat] || { apps: [] };
+        categories[cat] = categories[cat] || { apps: [] }
 
-        categories[cat].apps[appName] = appName;
-      });
+        categories[cat].apps[appName] = appName
+      })
     }
 
     for (const cat in categories) {
-      const apps = [];
+      const apps = []
 
       for (const appName in categories[cat].apps) {
-        const { confidence, version } = response.tabCache.detected[appName];
+        const { confidence, version } = response.tabCache.detected[appName]
 
         apps.push(
           [
             'a', {
               class: 'detected__app',
               target: '_blank',
-              href: `https://www.wappalyzer.com/technologies/${slugify(appName)}`,
+              href: `https://www.wappalyzer.com/technologies/${slugify(appName)}`
             }, [
               'img', {
                 class: 'detected__app-icon',
-                src: `../images/icons/${response.apps[appName].icon || 'default.svg'}`,
-              },
+                src: `../images/icons/${response.apps[appName].icon || 'default.svg'}`
+              }
             ], [
               'span', {
-                class: 'detected__app-name',
+                class: 'detected__app-name'
               },
-              appName,
+              appName
             ], version ? [
               'span', {
-                class: 'detected__app-version',
+                class: 'detected__app-version'
               },
-              version,
+              version
             ] : null, confidence < 100 ? [
               'span', {
-                class: 'detected__app-confidence',
+                class: 'detected__app-confidence'
               },
-              `${confidence}% sure`,
-            ] : null,
-          ],
-        );
+              `${confidence}% sure`
+            ] : null
+          ]
+        )
       }
 
       template.push(
         [
           'div', {
-            class: 'detected__category',
+            class: 'detected__category'
           }, [
             'div', {
-              class: 'detected__category-name',
+              class: 'detected__category-name'
             }, [
               'a', {
                 class: 'detected__category-link',
                 target: '_blank',
-                href: `https://www.wappalyzer.com/categories/${slugify(response.categories[cat].name)}`,
+                href: `https://www.wappalyzer.com/categories/${slugify(response.categories[cat].name)}`
               },
-              browser.i18n.getMessage(`categoryName${cat}`),
+              browser.i18n.getMessage(`categoryName${cat}`)
             ], [
               'span', {
                 class: `detected__category-pin-wrapper${pinnedCategory == cat ? ' detected__category-pin-wrapper--active' : ''}`,
                 'data-category-id': cat,
-                title: browser.i18n.getMessage('categoryPin'),
+                title: browser.i18n.getMessage('categoryPin')
               }, [
                 'img', {
                   class: 'detected__category-pin detected__category-pin--active',
-                  src: '../images/pin-active.svg',
-                },
+                  src: '../images/pin-active.svg'
+                }
               ], [
                 'img', {
                   class: 'detected__category-pin detected__category-pin--inactive',
-                  src: '../images/pin.svg',
-                },
-              ],
-            ],
+                  src: '../images/pin.svg'
+                }
+              ]
+            ]
           ], [
             'div', {
-              class: 'detected__apps',
+              class: 'detected__apps'
             },
-            apps,
-          ],
-        ],
-      );
+            apps
+          ]
+        ]
+      )
     }
 
     template = [
       'div', {
-        class: 'detected',
+        class: 'detected'
       },
-      template,
-    ];
+      template
+    ]
   } else {
     template = [
       'div', {
-        class: 'empty',
+        class: 'empty'
       },
       [
         'span', {
-          class: 'empty__text',
+          class: 'empty__text'
         },
-        browser.i18n.getMessage('noAppsDetected'),
-      ],
-    ];
+        browser.i18n.getMessage('noAppsDetected')
+      ]
+    ]
   }
 
-  return template;
+  return template
 }
 
-async function getApps() {
+async function getApps () {
   try {
     const tabs = await browser.tabs.query({
       active: true,
-      currentWindow: true,
-    });
+      currentWindow: true
+    })
 
     port.postMessage({
       id: 'get_apps',
-      tab: tabs[0],
-    });
+      tab: tabs[0]
+    })
   } catch (error) {
-    console.error(error); // eslint-disable-line no-console
+    console.error(error) // eslint-disable-line no-console
   }
 }
 
 /**
  * Async function to update body class based on option.
  */
-async function getThemeMode() {
+async function getThemeMode () {
   try {
     port.postMessage({
-      id: 'update_theme_mode',
-    });
+      id: 'update_theme_mode'
+    })
   } catch (error) {
-    console.error(error); // eslint-disable-line no-console
+    console.error(error) // eslint-disable-line no-console
   }
 }
 
@@ -222,67 +222,62 @@ async function getThemeMode() {
  * Update theme mode based on browser option.
  * @param {object} res Response from port listener.
  */
-function updateThemeMode(res) {
+function updateThemeMode (res) {
   if (res.hasOwnProperty('themeMode') && res.themeMode !== false) {
-    document.body.classList.add('theme-mode-sync');
+    document.body.classList.add('theme-mode-sync')
   }
 }
 
-function displayApps(response) {
-  pinnedCategory = response.pinnedCategory; // eslint-disable-line prefer-destructuring
-  termsAccepted = response.termsAccepted; // eslint-disable-line prefer-destructuring
+function displayApps (response) {
+  pinnedCategory = response.pinnedCategory // eslint-disable-line prefer-destructuring
+  termsAccepted = response.termsAccepted // eslint-disable-line prefer-destructuring
 
   if (termsAccepted) {
-    replaceDomWhenReady(appsToDomTemplate(response));
+    replaceDomWhenReady(appsToDomTemplate(response))
   } else {
-    i18n();
+    i18n()
 
-    const wrapper = document.querySelector('.terms__wrapper');
+    const wrapper = document.querySelector('.terms__wrapper')
 
     document.querySelector('.terms__accept').addEventListener('click', () => {
       port.postMessage({
         id: 'set_option',
         key: 'termsAccepted',
-        value: true,
-      });
+        value: true
+      })
 
-      wrapper.classList.remove('terms__wrapper--active');
+      wrapper.classList.remove('terms__wrapper--active')
 
-      getApps();
-    });
+      getApps()
+    })
 
-    wrapper.classList.add('terms__wrapper--active');
+    wrapper.classList.add('terms__wrapper--active')
   }
-}
-
-function getCVEs(name, version = "0.0") {
-
-  return;
 }
 
 port.onMessage.addListener((message) => {
   switch (message.id) {
     case 'get_apps':
       // console.log(message.response.tabCache.detected);
-      for (var a in message.response.tabCache.detected) {
-        const name = message.response.tabCache.detected[a].name;
-        var version = message.response.tabCache.detected[a].version;
-        if (version.length == 0) {
-          // do something
-        }
-        console.log(message.response.tabCache.detected[a].name + " " + message.response.tabCache.detected[a].version);
-      }
-      displayApps(message.response);
+      const encoded = JSON.stringify(message.response.tabCache.detected)
 
-      break;
+      displayApps(message.response)
+
+      break
     case 'update_theme_mode':
-      updateThemeMode(message.response);
+      updateThemeMode(message.response)
 
-      break;
+      break
     default:
     // Do nothing
   }
-});
+})
 
-getThemeMode();
-getApps();
+const b = document.getElementById('button')
+b.onclick = function () {
+  var encoding = encoded
+  chrome.tabs.create({ url: chrome.extension.getURL('table.html?d=' + encoding) })
+}
+
+getThemeMode()
+getApps()

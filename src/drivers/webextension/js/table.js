@@ -1,6 +1,9 @@
 const cveTable = document.getElementById('cveTable')
+console.log(window.location.search)
+const dict = window.location.search.split('d=')[1]
+console.log(dict)
 
-function createTable(pkg, version) {
+function addToTable (pkg, version) {
   fetch('http://localhost:5000/' + pkg + '/' + version).then(
     (response) => {
       if (response.status !== 200) {
@@ -20,4 +23,13 @@ function createTable(pkg, version) {
       })
 }
 
-createTable('nginx', '1.8')
+for (var a in dict) {
+  const name = dict[a].name
+  var version = dict[a].version
+  if (version.length == 0) {
+    // do something
+  }
+
+  console.log(dict[a].name + ' ' + dict[a].version)
+  addToTable(name, version)
+}
