@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, make_response
 import json
+import re
 import werkzeug.datastructures
 
 app = Flask(__name__)
@@ -7,6 +8,7 @@ app = Flask(__name__)
 @app.route('/<string:package>/<string:version>', methods = ['GET'])
 def get(package, version):
     package = package.lower()
+    version = re.search('[0-9]*\.[0-9]*', version).group()
     try:
         if "apache" in package or "httpd" in package:
             package = "httpd"
