@@ -11,5 +11,3 @@ def get(package, version):
             return make_response(jsonify(data[version]), 200)
     except:
         return make_response(jsonify({"failure": "failure"}), 500)
-
-app.run()
