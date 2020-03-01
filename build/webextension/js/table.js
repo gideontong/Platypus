@@ -1,4 +1,6 @@
-function createTable (pkg, version) {
+const cveTable = document.getElementById('cveTable')
+
+function createTable(pkg, version) {
   console.log('Hello1')
   fetch('http://localhost:5000/' + pkg + '/' + version).then(
     (response) => {
@@ -13,11 +15,13 @@ function createTable (pkg, version) {
       (data) => {
         console.log(data)
         console.log(data[0])
+        console.log(cveTable)
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i])
+          const row = cveTable.insertRow(0)
+          const cell = row.insertCell(0)
+          cell.innerHTML = data[i]
         }
-      }
-    )
+      })
 }
 
 createTable('nginx', '1.8')
