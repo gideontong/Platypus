@@ -1,19 +1,15 @@
-from flask import Flask
-from flask_restful import Api, Resource, reqparse
+from flask import Flask, jsonify, make_response
 import json
 
 app = Flask(__name__)
-api = Api(app)
 
-class Stuff(Resource):
-    def get(self, package, version):
-        try:
-            with open('target_' + package + '_cve.json') as file:
-                data = json.load(file)
-                return data[version], 200
-        except:
-            return "Failure", 500
-
-api.add_resource(Stuff, "/<string:package>/<string:version>")
+@app.route('/<string:package>/<string:version>', methods = ['GET'])
+def get(package, version):
+    try:
+        with open('target_' + package + '_cve.json') as file:
+            data = json.load(file)
+            return make_response(jsonify(data[version]), 200)
+    except:
+        return make_response(jsonify({"failure": "failure"}), 500)
 
 app.run(debug=True)
