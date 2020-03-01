@@ -5,10 +5,12 @@ import werkzeug.datastructures
 
 app = Flask(__name__)
 
+@app.route('/<string:package>', defaults={'version': None}, methods=['GET'])
 @app.route('/<string:package>/<string:version>', methods = ['GET'])
 def get(package, version):
     package = package.lower()
-    version = re.search('[0-9]*\.[0-9]*', version).group()
+    if version is not None:
+        version = re.search('[0-9]*\.[0-9]*', version).group()
     try:
         if "apache" in package or "httpd" in package:
             package = "httpd"
@@ -20,6 +22,12 @@ def get(package, version):
             package = "postgresql"
         with open('target_' + package + '_cve.json') as file:
             data = json.load(file)
+            results = []
+            if version is None:
+                for k, v in data.items():
+                    results += data[k]
+                return make_response(jsonify(results), 200)
+
             return make_response(jsonify(data[version]), 200)
     except:
         return make_response(jsonify({"failure": "failure"}), 500)
