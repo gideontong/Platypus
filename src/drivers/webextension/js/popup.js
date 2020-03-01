@@ -7,6 +7,8 @@
 let pinnedCategory = null
 let termsAccepted = false
 
+let encoded = undefined
+
 const port = browser.runtime.connect({
   name: 'popup.js'
 })
@@ -259,7 +261,7 @@ port.onMessage.addListener((message) => {
   switch (message.id) {
     case 'get_apps':
       // console.log(message.response.tabCache.detected);
-      const encoded = JSON.stringify(message.response.tabCache.detected)
+      encoded = encodeURIComponent(JSON.stringify(message.response.tabCache.detected))
 
       displayApps(message.response)
 
@@ -274,9 +276,11 @@ port.onMessage.addListener((message) => {
 })
 
 const b = document.getElementById('button')
-b.onclick = function () {
-  var encoding = encoded
-  chrome.tabs.create({ url: chrome.extension.getURL('table.html?d=' + encoding) })
+b.onclick = () => {
+  let encoding = encoded
+  if (encoding !== undefined) {
+    chrome.tabs.create({ url: chrome.extension.getURL('html/table.html?d=' + encoding) })
+  }
 }
 
 getThemeMode()

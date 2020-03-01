@@ -1,7 +1,8 @@
-const cveTable = document.getElementById('cveTable')
-console.log(window.location.search)
-const dict = window.location.search.split('d=')[1]
-console.log(dict)
+const cveTable = document.getElementById('cveTable');
+console.log(window.location.search);
+const jsonString = decodeURIComponent(window.location.search.split('d=')[1]);
+const dict = JSON.parse(jsonString);
+console.log(dict);
 
 function addToTable (pkg, version) {
   fetch('http://localhost:5000/' + pkg + '/' + version).then(
