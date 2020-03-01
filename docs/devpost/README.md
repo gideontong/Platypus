@@ -1,4 +1,6 @@
-# Platypus
+# Platypus (Devpost)
+
+_A side note that this piece of documentation originally appeared on Devpost at [this link](https://devpost.com/software/slo-hacks-2020)._
 
 ![Platypus Logo](docs/assets/platypus.png)
 
@@ -31,10 +33,6 @@ The Python server is now running, so you can start the Chrome extension by unpac
 cd build
 unzip extension.zip
 ```
-
-## Documentation
-
-If you'd like to read more about Platypus, you can visit the docs at the website [here](https://getplatypus.ml). However, if for some reason the documentation is offline or you yourself are offline, you can click [this link](/docs) as well to view an offline/local copy. This project was also posted to Devpost, and you can view the one-page Devpost version of the documentation [here](https://getplatypus.ml/devpost), or [here](/docs/devpost) if you are offline.
 
 ## License
 
