@@ -1,7 +1,6 @@
 const cveTable = document.getElementById('cveTable')
 
 function createTable(pkg, version) {
-  console.log('Hello1')
   fetch('http://localhost:5000/' + pkg + '/' + version).then(
     (response) => {
       if (response.status !== 200) {
@@ -13,9 +12,6 @@ function createTable(pkg, version) {
     })
     .then(
       (data) => {
-        console.log(data)
-        console.log(data[0])
-        console.log(cveTable)
         for (let i = 0; i < data.length; i++) {
           const row = cveTable.insertRow(0)
           const cell = row.insertCell(0)
