@@ -2,15 +2,13 @@
 
 ![Platypus Logo](docs/assets/platypus.png)
 
-
-
 Platypus is a browser extension that shows you what CVEs the website you're viewing is vulnerable to.
 
 ## Usage
 
 You'll need [Python 3](https://www.python.org/downloads/), [Git](https://git-scm.com/downloads), and [Docker](https://www.docker.com/products/docker-desktop) on your system. This will allow you to install and run the development environment for Platypus.
 
-Clone the Platypus app from GitHub and execute `./run,sh` in your favorite shell.
+Clone the Platypus app from GitHub and execute `./run.sh` in your favorite shell.
 
 ```bash
 git clone https://www.github.com/gideontong/SLO-Hacks-2020.git
