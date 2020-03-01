@@ -14,13 +14,6 @@ provider:
 
 plugins:
   - serverless-google-cloudfunctions
-  - serverless-python-requirements
-  - serverless-wsgi
-
-custom:
-  wsgi:
-    app: main.app
-    pythonBin: python3
 
 # needs more granular excluding in production as only the serverless provider npm
 # package should be excluded (and not the whole node_modules directory)
@@ -32,9 +25,9 @@ package:
 
 functions:
   main:
-    handler: app
+    handler: http
     events:
-      - http: ANY
+      - http: path
   # NOTE: the following uses an "event" event (pubSub event in this case).
   # Please create the corresponding resources in the Google Cloud
   # before deploying this service through Serverless

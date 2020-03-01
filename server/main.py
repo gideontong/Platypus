@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, make_response
 import json
+import werkzeug.datastructures
 
 app = Flask(__name__)
 
@@ -11,3 +12,18 @@ def get(package, version):
             return make_response(jsonify(data[version]), 200)
     except:
         return make_response(jsonify({"failure": "failure"}), 500)
+
+def http(request):
+    with app.app_context():
+        headers = werkzeug.datastructures.Headers()
+        for key, value in request.headers.items():
+            headers.add(key, value)
+        with app.test_request_context(method=request.method, base_url=request.base_url, path=request.path, query_string=request.query_string, headers=headers, data=request.form):
+            try:
+                rv = app.preprocess_request()
+                if rv is None:
+                    rv = app.dispatch_request()
+            except Exception as e:
+                rv = app.handle_user_exception(e)
+            response = app.make_response(rv)
+            return app.process_response(response)
