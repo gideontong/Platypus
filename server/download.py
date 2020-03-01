@@ -14,7 +14,7 @@ for target in targetData:
     url = endpoint + "?" + "package=" + target
     responseData = requests.request("GET", url, headers=headers, data = payload)
     response = json.loads(responseData.text)
-    with open('target_' + target + '.json', 'w') as outfile:
+    with open('targets/target_' + target + '.json', 'w') as outfile:
         json.dump(response, outfile)
     cveData = {}
     size = len(response)

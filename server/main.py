@@ -14,6 +14,8 @@ def get(package, version):
             package = "nginx"
         elif "wordpress" in package:
             package = "wp"
+        elif "postgres" in package:
+            package = "postgresql"
         with open('target_' + package + '_cve.json') as file:
             data = json.load(file)
             return make_response(jsonify(data[version]), 200)
