@@ -35,7 +35,3 @@ unzip extension.zip
 ## License
 
 Platypus is licensed under the [MIT License](/LICENSE). However, it is based off of an application called Wappalyzer, and code from this repository is licensed under the [GPL](https://github.com/AliasIO/Wappalyzer/blob/master/LICENSE).
-
-## Documentation
-
-Please read the [developer documentation](https://www.wappalyzer.com/docs) to get started.
