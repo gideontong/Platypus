@@ -249,3 +249,20 @@ body.theme-mode-sync  {
 .theme-mode-sync .terms__privacy {
   color: white;
 }
+
+#button {
+  padding: 1em;
+  text-decoration: none;
+  background-color: #0288D0;
+  color: white;
+  padding: 3em;
+  border-radius: 4px;
+}
+
+.container {
+  padding-bottom: 1em;
+}
+
+.bottomSpace {
+  padding-bottom: 1em;
+}
