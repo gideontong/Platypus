@@ -1,11 +1,11 @@
 const cveTable = document.getElementById('cveTable');
-console.log(window.location.search);
 const jsonString = decodeURIComponent(window.location.search.split('d=')[1]);
 const dict = JSON.parse(jsonString);
 console.log(dict);
 
 function addToTable (pkg, version) {
-  fetch('http://localhost:5000/' + pkg + '/' + version).then(
+  console.log('https://us-central1-wappalyzer-slo.cloudfunctions.net/http/' + pkg + '/' + version)
+  fetch('https://us-central1-wappalyzer-slo.cloudfunctions.net/http/' + pkg + '/' + version).then(
     (response) => {
       if (response.status !== 200) {
         console.log('Looks like there was a problem. Status Code: ' +
@@ -16,7 +16,9 @@ function addToTable (pkg, version) {
     })
     .then(
       (data) => {
+        console.log(data)
         for (let i = 0; i < data.length; i++) {
+          console.log("inserting")
           const row = cveTable.insertRow(0)
           const cell = row.insertCell(0)
           cell.innerHTML = data[i]
