@@ -1,4 +1,8 @@
-# SLO hacks 2020
+# Platypus
+
+![Platypus Logo](docs/assets/platypus.png)
+
+
 
 New code is licensed under MIT
 
