@@ -50,7 +50,7 @@ for target in targetData:
                     cveData[version].append(CVE['CVE'])
         except:
             pass
-    with open('target_' + target + '_cve_backup.txt', 'w') as outfile:
-        outfile.write(str(cveData))
+    # with open('target_' + target + '_cve_backup.txt', 'w') as outfile:
+        # outfile.write(str(cveData))
     with open('target_' + target + '_cve.json', 'w') as outfile:
         json.dump(cveData, outfile)
