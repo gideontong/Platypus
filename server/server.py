@@ -12,4 +12,4 @@ def get(package, version):
     except:
         return make_response(jsonify({"failure": "failure"}), 500)
 
-app.run(debug=True)
+app.run()
