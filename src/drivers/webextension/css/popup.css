@@ -1,9 +1,9 @@
 body {
-	background: #fff;
-  direction: __MSG_@@bidi_dir__;
-	font-family: Helvetica, Arial, sans-serif;
-  font-size: .8rem;
-	margin: 0;
+  background: #fff;
+  direction: __MSG_ @@bidi_dir__;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8rem;
+  margin: 0;
   min-width: 30rem;
 }
 
@@ -20,9 +20,9 @@ body {
 
 .header__logo {
   display: inline-block;
-  margin: .2rem 1.5rem 0 1.5rem;
+  margin: 0.2rem 1.5rem 0 1.5rem;
   -webkit-backface-visibility: hidden;
-  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  -webkit-transform: translateZ(0) scale(1, 1);
   transform: translateZ(0);
   height: 2rem;
 }
@@ -64,15 +64,15 @@ body {
 }
 
 .detected__category-pin-wrapper {
-  margin-left: .2rem;
-  margin-right: .2rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 .detected__category-pin {
   cursor: pointer;
   display: none;
   height: 16px;
-  margin-left: .2rem;
+  margin-left: 0.2rem;
   width: 16px;
   vertical-align: middle;
 }
@@ -104,22 +104,23 @@ body {
 }
 
 .detected__app-icon {
-	display: inline-block;
-	height: 16px;
-	margin-inline-end: .5rem;
-	vertical-align: -.2rem;
-	width: 16px;
+  display: inline-block;
+  height: 16px;
+  margin-inline-end: 0.5rem;
+  vertical-align: -0.2rem;
+  width: 16px;
 }
 
 .detected__app-name {
 }
 
-.detected__app-version, .detected__app-confidence {
+.detected__app-version,
+.detected__app-confidence {
   background: #eee;
   border-radius: 3px;
-  font-size: .7rem;
-  margin-left: .3rem;
-  padding: .1rem .2rem;
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+  padding: 0.1rem 0.2rem;
 }
 
 .detected__app:hover .detected__app-name {
@@ -132,16 +133,16 @@ body {
 }
 
 .detected-app {
-	padding: 7px 0;
+  padding: 7px 0;
 }
 
 .detected-app:first-child {
-	padding-top: 0;
+  padding-top: 0;
 }
 
 .detected-app:last-child {
-	border: none;
-	padding-bottom: 0;
+  border: none;
+  padding-bottom: 0;
 }
 
 .empty {
@@ -176,7 +177,7 @@ body {
 }
 
 .terms__content {
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 150%;
   text-align: center;
   margin-bottom: 1rem;
@@ -189,8 +190,8 @@ body {
   border-radius: 3px;
   color: white;
   cursor: pointer;
-  font-size: .9rem;
-  padding: .8rem 3rem;
+  font-size: 0.9rem;
+  padding: 0.8rem 3rem;
 }
 
 .terms__accept:hover {
@@ -203,7 +204,7 @@ body {
 }
 
 /* Add alternative color palette for Dark mode theme. */
-body.theme-mode-sync  {
+body.theme-mode-sync {
   background: linear-gradient(160deg, #32067c, #150233);
 }
 
@@ -223,7 +224,8 @@ body.theme-mode-sync  {
   color: white;
 }
 
-.theme-mode-sync .detected__category-link, .theme-mode-sync .detected__app {
+.theme-mode-sync .detected__category-link,
+.theme-mode-sync .detected__app {
   color: white;
 }
 
@@ -232,7 +234,8 @@ body.theme-mode-sync  {
   border-bottom: 1px solid white;
 }
 
-.theme-mode-sync .detected__app-version, .theme-mode-sync .detected__app-confidence {
+.theme-mode-sync .detected__app-version,
+.theme-mode-sync .detected__app-confidence {
   background-color: #4608ad;
 }
 
@@ -241,7 +244,10 @@ body.theme-mode-sync  {
 }
 
 .theme-mode-sync .detected__app:hover .theme-mode-sync .detected__app-version,
-.theme-mode-sync .detected__app:hover .theme-mode-sync .detected__app-confidence {
+.theme-mode-sync
+  .detected__app:hover
+  .theme-mode-sync
+  .detected__app-confidence {
   border-bottom: none;
 }
 
@@ -253,9 +259,9 @@ body.theme-mode-sync  {
 #button {
   padding: 1em;
   text-decoration: none;
-  background-color: #0288D0;
+  background-color: #0288d0;
   color: white;
-  padding: 3em;
+  margin: 3em;
   border-radius: 4px;
 }
 
