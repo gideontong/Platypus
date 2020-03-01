@@ -256,7 +256,7 @@ function displayApps(response) {
 }
 
 function getCVEs(name, version = "0.0") {
-  
+
   return;
 }
 
@@ -280,7 +280,7 @@ port.onMessage.addListener((message) => {
 
       break;
     default:
-      // Do nothing
+    // Do nothing
   }
 });
 
