@@ -5,7 +5,7 @@ import werkzeug.datastructures
 
 app = Flask(__name__)
 
-@app.route('/<string:package>', defaults={'version': None}, methods=['GET'])
+@app.route('/<string:package>/', defaults={'version': None}, methods=['GET'])
 @app.route('/<string:package>/<string:version>', methods = ['GET'])
 def get(package, version):
     package = package.lower()
