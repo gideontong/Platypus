@@ -1,4 +1,4 @@
-# End-of-line normalization
+# End-of-line to Unix
 * text=auto
 
 *.cmd         text eol=lf
