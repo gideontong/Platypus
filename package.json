@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "file-type": "7.4.*",
-    "is-svg": "2.1.*",
+    "is-svg": "4.2.*",
     "read-chunk": "2.1.*"
   },
   "devDependencies": {
